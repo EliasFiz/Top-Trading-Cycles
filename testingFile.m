@@ -1,24 +1,16 @@
 clc
 clear
 tic
-num_iterations = 100;
-num_agents = 20;
+num_iterations = 500;
+num_agents = 10;
 agent_avg = [];
 for num = 1:num_agents
    loops = [];
    for iteration = 1:num_iterations
-       prefs = generatePreferences(num, num);
-      
+       prefs = generatePreferences(num, num);      
        allocations = zeros(1, height(prefs));
-      
-       counter = 0;
-       while ~all(prefs(:) == -1)
-          
-           [prefs allocations] = iterate(prefs, allocations);
-           counter = counter + 1;
-      
-       end
-      
+
+       [allocations counter] = iterate(prefs, allocations);
        loops = [loops counter];
        [iteration num]
    end
